@@ -1,0 +1,2 @@
+module Adomin::HomesHelper
+end

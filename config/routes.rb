@@ -8,7 +8,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 namespace :customers do
   root to: "homes#top"
   
-
+end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
