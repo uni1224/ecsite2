@@ -5,8 +5,15 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-namespace :customers do
+scope module: :public do
   root to: "homes#top"
+  get 'about', to: 'homes#about'
+  get 'customers/mypage' => 'customers#show', as: 'mypage'
+  get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
+  patch 'customers/information' => 'customers#update', as: 'update_information'
+  get 'customers/quit' => 'customers#quit', as: 'confirm_quit'
+  put 'customers/information' => 'customers#update'
+  patch 'customers/out' => 'customers#out', as: 'out_customer'
   
 end
 # 管理者用
