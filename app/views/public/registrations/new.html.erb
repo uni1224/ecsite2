@@ -1,29 +1,60 @@
-<h2>Sign up</h2>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h2>新規登録</h2>
 
 <%= form_with model: @customer, url: registration_path(resource_name), local:true do |f| %>
-  <%= render "publics/shared/error_messages", resource: @customer %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <%= render "public/shared/error_messages", resource: @customer %>
+    <table class= "customer_info">
+      <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>名前</td>
+          <td><%= f.label :last_name, "(姓)", class: "customer_name" %> <%= f.text_field :last_name, :placeholder =>"山田" %></td>
+          <td><%= f.label :first_name, "(名)", class: "customer_name" %> <%= f.text_field :first_name, :placeholder =>"太朗" %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.label :last_name_kana, "(セイ)" %> <%= f.text_field :last_name_kana, :placeholder =>"ヤマダ" %></td>
+          <td><%= f.label :first_name_kana, "(メイ)" %> <%= f.text_field :first_name_kana, :placeholder =>"タロウ" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %></td>
+          <td colspan="2"><%= f.text_field :postal_code, :placeholder =>"5420076", class: "jpostal_code" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address, "住所(郵便番号から自動入力" %></td>
+          <td colspan="2"><%= f.text_field :address, class: "jpostal_address" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :phone_number,"電話番号(ハイフンなし10or11桁" %></td>
+          <td><%= f.text_field :phone_number, :placeholder =>"00000000000" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation, "パスワード（確認用)" %></td>
+          <td><%=f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+        </tr>
+      </tbody>
+    </table>
 <% end %>
-
-<%= render "publics/shared/links" %>
+    <h6>既に登録済みの方</h6>
+      <p><%= link_to "コチラ", new_customer_session_path, class: "underline" %></p>
+    </div>
+  </div>
+</div>
