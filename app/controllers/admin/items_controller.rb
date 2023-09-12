@@ -21,4 +21,10 @@ class Admin::ItemsController < ApplicationController
     def show
         @item = Item.find(params[:id])
     end
+
+  private
+  def item_params
+      params.require(:item).permit(:name, :description, :genre_id, :is_selled)
+  end
+
 end
