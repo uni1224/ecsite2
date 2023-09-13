@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="col-md-12 text-center mt-5">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-4 headline">
+        <h4>商品編集</h4>
+      </div>
+    </div>
+    <%= form_with model: @item, url: admin_item_path do |f| %>
+      <table class='table-responsive'>
+        <tr>
+          <th>商品画像</th>
+          <td><%= f.file_field :image, accept: 'image/*' %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :'商品名' %></th>
+            <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :'商品説明' %></th>
+            <td><%= f.text_area :description %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :'ジャンル' %></th>
+            <td><%#= f.collection_select :genre_id, Genle.all, :id, :name, include_blank: '選択してください' %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :'税抜き価格' %></th>
+            <td><%= f.text_field :price %>円</td>
+        </tr>
+        <tr>
+            <th><%= f.label :'販売ステータス' %></th>
+            <td><%#= f.radio_button :is_selled, Item.is_selled.key(true) %>
+                <%#= f.label :is_selled_sale, Item.is_selleds_i18n[:sale] %>
+                <%#= f.radio_button :is_selled, Item.is_selleds.key(false) %>
+                <%#= f.label :is_selled_sold_out, Item.is_selleds_i18n[:sold_out] %></td>
+        </tr>
+      </table>
+        <div class='text-center'>
+            <%= f.submit '編集を保存', class:'btn btn-success' %>
+        </div>
+    <% end %>
+  </div>
+</div>
