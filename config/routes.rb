@@ -14,6 +14,7 @@ scope module: :public do
   get 'customers/quit' => 'customers#quit', as: 'confirm_quit'
   put 'customers/information' => 'customers#update'
   patch 'customers/out' => 'customers#out', as: 'out_customer'
+  resources :items, only: [:index, :show]
 
 end
 # 管理者用
@@ -24,6 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 namespace :admin do
   root to: "homes#top"
   resources :items, only: [:index, :show, :new, :create, :edit, :update]
+  resources :customer, only: [:index, :show, :edit, :update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
