@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <th><%= f.label :'ジャンル' %></th>
-            <td><%#= f.collection_select :genre_id, Genle.all, :id, :name, include_blank: '選択してください' %></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></td>
         </tr>
         <tr>
             <th><%= f.label :'税抜き価格' %></th>
@@ -29,10 +29,10 @@
         </tr>
         <tr>
             <th><%= f.label :'販売ステータス' %></th>
-            <td><%#= f.radio_button :is_selled, Item.is_selled.key(true) %>
-                <%#= f.label :is_selled_sale, Item.is_selleds_i18n[:sale] %>
-                <%#= f.radio_button :is_selled, Item.is_selleds.key(false) %>
-                <%#= f.label :is_selled_sold_out, Item.is_selleds_i18n[:sold_out] %></td>
+            <td><%= f.radio_button :is_selled, Item.is_selleds.key(true) %>
+                <%= f.label :is_selled_sale, '販売中' %>
+                <%= f.radio_button :is_selled, Item.is_selleds.key(false) %>
+                <%= f.label :is_selled_sold_out, '売り切れ' %></td>
         </tr>
       </table>
         <div class='text-center'>

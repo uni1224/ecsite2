@@ -30,7 +30,7 @@
                (税込価格)
                 </td>
                 <td valign="middle">
-               ￥<%#= p @item.price.to_s(:delimited) %>(<%#= @item.tax_price %>)円
+               ￥<%= p @item.price.to_s(:delimited) %>(<%= @item.tax_price %>)円
                 </td>
               </tr>
                 <td>販売ステータス</td>
