@@ -15,7 +15,7 @@
       <%= f.text_field :name %>
     </div>
     <div class="form-group">
-      <%= f.submit '新規登録', class: 'btn btn-success' %>
+      <%= f.submit '新規登録', class: 'btn btn-info' %>
     </div>
   </div>
 <% end %>
@@ -32,7 +32,7 @@
 <% @genres.each do |genre| %>
           <tr>
             <td><%= genre.name %></td>
-            <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+            <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-info' %></td>
           </tr>
 <% end %>
         </tbody>
