@@ -33,12 +33,26 @@
                ￥<%= p @item.price.to_s(:delimited) %>(<%= @item.tax_price %>)円
                 </td>
               </tr>
+              <td>
+                  <% if customer_signed_in? && @item.is_selled == 'sale' %>
+                  <%= form_with model: @cart_item do |f| %>
+                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <p class = 'pt-3'>
+                    <%= f.select :amount, *[1..10] %>
+                    <%= f.submit 'カートに入れる' %>
+                  </p>
+                  <% end %>
+                  <% else %>
                 <td>販売ステータス</td>
                 <td><% if @item.is_selled == "sale" %>
                   <p style = "color: #4ec51e;">販売中</p>
                     <% else %>
                   <p style = "color: #ff3838;">売切れ</p>
-                    <% end %></td></tr>
+                    <% end %></td>
+                    <% end %>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

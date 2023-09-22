@@ -15,7 +15,11 @@ scope module: :public do
   put 'customers/information' => 'customers#update'
   patch 'customers/out' => 'customers#out', as: 'out_customer'
   resources :items, only: [:index, :show]
-
+  resources :cart_items, only:[:index, :create, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end
 # 管理者用
 # URL /admin/sign_in ...
