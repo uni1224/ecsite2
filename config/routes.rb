@@ -14,6 +14,7 @@ scope module: :public do
   get 'customers/quit' => 'customers#quit', as: 'confirm_quit'
   put 'customers/information' => 'customers#update'
   patch 'customers/out' => 'customers#out', as: 'out_customer'
+  resources :addresses, only: [:index, :edit,:create, :update, :destroy]
   resources :items, only: [:index, :show]
   resources :cart_items, only:[:index, :create, :update, :destroy] do
     collection do
