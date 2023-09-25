@@ -1,0 +1,23 @@
+<div class = "ml-5">
+  <h5 class = "ml-5 my-4"><strong style="background-color:#EEEEEE;">配送先編集</strong></h5>
+    <%= form_with model: @address do |f| %>
+        <table>
+          <tr>
+            <td><%= f.label :'郵便番号(ハイフンなし)' %></td>
+            <td><%= f.text_field :postal_code, :placeholder => "#{@address.postal_code}" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :'住所' %></td>
+            <td><%= f.text_field :address, size:58, :placeholder => "#{@address.address}" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :'宛名' %></td>
+            <td><%= f.text_field :name, :placeholder => "#{@address.name}" %></td>
+          </tr>
+          <tr>
+            <td colspan= "2"><%= f.submit '保存する', class: 'btn btn-info' %></td>
+          </tr>
+        </table>
+    <% end %>
+</div>
