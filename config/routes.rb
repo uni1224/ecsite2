@@ -16,6 +16,12 @@ scope module: :public do
   patch 'customers/out' => 'customers#out', as: 'out_customer'
   resources :addresses, only: [:index, :edit,:create, :update, :destroy]
   resources :items, only: [:index, :show]
+  resources :orders, only: [:new, :index, :show, :create] do
+    collection do
+      post 'confirm'
+      get 'thanks'
+    end
+  end
   resources :cart_items, only:[:index, :create, :update, :destroy] do
     collection do
       delete 'destroy_all'
