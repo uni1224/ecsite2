@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
 
-     def new
+ def new
     @cart_items = current_customer.cart_items
     # カートの中に商品が入っている場合
     if @cart_items.any?
@@ -80,7 +80,7 @@ class Public::OrdersController < ApplicationController
    private
 
   def order_params
-    params.require(:order).permit(:customer_id, :name, :address1, :postal_code, :postage, :billing_amount, :payment_method, :order_status, :address_option,:address_id,:pastal_code,:address)
+    params.require(:order).permit(:customer_id, :name, :address1, :postal_code, :postage, :billing_amount, :payment_method, :order_status)
   end
 
 end
