@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
 
- def new
+  def new
     @cart_items = current_customer.cart_items
     # カートの中に商品が入っている場合
     if @cart_items.any?
@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     redirect_to cart_items_path
     end
   end
-
+  
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -78,7 +78,7 @@ class Public::OrdersController < ApplicationController
   end
 
    private
-
+  
   def order_params
     params.require(:order).permit(:customer_id, :name, :address1, :postal_code, :postage, :billing_amount, :payment_method, :order_status)
   end
