@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     redirect_to cart_items_path
     end
   end
-  
+
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -68,7 +68,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.page(params[:page]).per(5)
+    @orders = current_customer.orders.all
   end
 
   def show
@@ -78,7 +78,7 @@ class Public::OrdersController < ApplicationController
   end
 
    private
-  
+
   def order_params
     params.require(:order).permit(:customer_id, :name, :address1, :postal_code, :postage, :billing_amount, :payment_method, :order_status)
   end
